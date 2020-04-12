@@ -5,14 +5,14 @@ import java.util.ListIterator;
 import java.util.Stack;
 
 public class Pruebas {
-	//idea: simulador de tren: da la info y te solicita la parada
+	//idea: simulador de tren
 //[linea 1: sol- chamartin- 5 de dic - pan de azucar]
 	public static void main(String[] args) {
 		//Algunos atributos que necesito:
 		int i=0;
 		
 		
-		
+		//6 y 4
 		//forma de hacerlo 1
 		//trabajadores del metro
 		                     //empleo
@@ -32,22 +32,41 @@ public class Pruebas {
 		
 		
 		//Estacion: 
-		Estacion estaciones = new Estacion("Villaverde Alto",accesos);
+		Estacion estaciones = new Estacion("Villaverde Alto","escaleras");
 		//Lineas: informacion
-				Lineas lineas= new Lineas(3, "amarillo", 1023.45, "ligero",estaciones);
+		Lineas lineas= new Lineas(3, "amarillo", 1023.45, "ligero",estaciones);
 		//agregamos las estaciones
-		lineas.getEstaciones().add(new Estacion("San Cristobal",accesos));
+		lineas.getEstaciones().add(new Estacion("San Cristobal","elevador"));
 		//agregamos el tipo de acceso de la estacion
-		estaciones.getAccesos().add(new Accesos ("elevador"));
-		lineas.getEstaciones().add(new Estacion("Villaverde Bajo-Cruce",accesos));
-		estaciones.getAccesos().add(new Accesos ("escaleras"));
-		lineas.getEstaciones().add(new Estacion("Ciudad de los Angeles",accesos));
-		estaciones.getAccesos().add(new Accesos ("elevador"));
-		lineas.getEstaciones().add(new Estacion("San Fermín Orcasur",accesos));
-		estaciones.getAccesos().add(new Accesos ("escaleras"));
+		//estaciones.getAccesos().add(new Accesos ("elevador"));
+		lineas.getEstaciones().add(new Estacion("Villaverde Bajo-Cruce","elevador"));
+		//estaciones.getAccesos().add(new Accesos ("escaleras"));
+		lineas.getEstaciones().add(new Estacion("Ciudad de los Angeles","escaleras"));
+		//estaciones.getAccesos().add(new Accesos ("elevador"));
+		lineas.getEstaciones().add(new Estacion("San Fermín Orcasur","elevador"));
+		lineas.getEstaciones().add(new Estacion("Hospital 12 de Octubre","escaleras"));
+		lineas.getEstaciones().add(new Estacion("Almendrales","escaleras"));
+		Estacion Legazpi= new Estacion("Legazpi","escaleras");
+		lineas.getEstaciones().add(Legazpi);
+		//Estacion principepio= new Estacion("Legazpi","elevador");
+		lineas.getEstaciones().add(new Estacion("Delicias","escaleras"));
+		lineas.getEstaciones().add(new Estacion("Palos de la frontera","elevador"));
+		lineas.getEstaciones().add( new Estacion("Embajadores","elevador"));
+		lineas.getEstaciones().add(new Estacion("Callao","elevador"));
+		
+		lineas.getEstaciones().add(new Estacion("Lavapies","escaleras"));
+		lineas.getEstaciones().add(new Estacion("Sol","elevador"));
+		
+		lineas.getEstaciones().add(new Estacion("Plaza de españa","elevador"));
+		lineas.getEstaciones().add(new Estacion("Ventura Rodriguez","elevador"));
+		Estacion Arguelles= new Estacion("Arguelles","escaleras");
+		lineas.getEstaciones().add(Arguelles);
+		Estacion Moncloa= new Estacion("Moncloa","elevador");
+		lineas.getEstaciones().add(Moncloa);
 		//iteradores de ArrayList
 		ListIterator<Estacion> iterador =lineas.getEstaciones().listIterator();
-		ListIterator<Accesos> iterador1=estaciones.getAccesos().listIterator();
+		Lineas lineas1= new Lineas(5, "verde", 1025.45, "normal",estaciones);
+		lineas1.getEstaciones().add(new Estacion("San Cristobal","elevador"));
 		//funciones para imprimir informacion
 				lineas.imprimirtodo();
 				//vagones: informacion
@@ -58,7 +77,8 @@ public class Pruebas {
 				                                   //cantidad de lts - placa
 				Locomotora locomotora= new Locomotora(0, 34740);
 				//metro: informacion
-				Metro metro= new Metro(null, "[ Linea 3: Villaverde Alto-Alameda Ozuna ]", vagon, null, lineas, locomotora);
+				Conductor conductor= new Conductor(true);
+				Metro metro= new Metro("", "[ Linea 3: Villaverde Alto-Alameda Ozuna ]", vagon, "", lineas, locomotora,conductor);
 				
 				
 				//Acciones que hace el metro
@@ -76,27 +96,31 @@ public class Pruebas {
 				Acciones acciones2= new Acciones("detenido","cerrandose");
 				
 				//Conductor
-				Conductor conductor= new Conductor(true);
+				
 				//Trabajador trabajador= new Trabajador(null, null, null, empleo);
-				boolean conductorexist=conductor.getConductor(empleo);
+				//boolean conductorexist=conductor.getConductor(empleo);
 				boolean movimiento= conductor.isEncendidotren();
-				String busqueda="elevador";
-		
+				
+		//boolean esta=lineas.esto();
 		//su bucle
+				metro.Parada("Villaverde Alto", "Ciudad de los Angeles");
+	
+				/*	if(conductorexist==true && movimiento==true ) {
+			while(  iterador.hasNext()  ) {
+				i++;
+				System.out.println("estacion "+i+": "+iterador.next().getNombreestacion()
+						+"\nacceso: "+iterador1.next().getAccesos()  );
+				acciones1.getMovimiento(conductor, trabajadores, empleo);
+				acciones1.getMovimientopuertas();
+				acciones2.getMovimiento(conductor, trabajadores, empleo);
+				acciones2.getMovimientopuertas();
+				acciones.getMovimiento(conductor, trabajadores, empleo);
+				acciones.getMovimientopuertas();
+				System.out.println();
+				//metro.imprimiracciones(acciones);
+			}
+		}*/
 		
-		while(conductorexist==true && movimiento==true  && iterador.hasNext() ) {
-			i++;
-			System.out.println("estacion "+i+": "+iterador.next().getNombreestacion()
-					+"\nacceso: "+iterador1.next().getAccesos()  );
-			acciones1.getMovimiento(conductor, trabajadores, empleo);
-			acciones1.getMovimientopuertas();
-			acciones2.getMovimiento(conductor, trabajadores, empleo);
-			acciones2.getMovimientopuertas();
-			acciones.getMovimiento(conductor, trabajadores, empleo);
-			acciones.getMovimientopuertas();
-			System.out.println();
-			//metro.imprimiracciones(acciones);
-		}
 		
 		
 		
