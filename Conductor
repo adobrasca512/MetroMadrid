@@ -1,0 +1,31 @@
+package MetroMadrid;
+
+public class Conductor {
+	
+	private boolean encendidotren;
+	public Conductor(boolean encendidotren) {
+		super();
+		this.encendidotren = encendidotren;
+	}
+	public boolean getConductor( Empleo empleo) {
+		boolean conductorexist=false;
+		if(empleo.getTipompleos().equalsIgnoreCase("conductor")) {
+			conductorexist=true;
+		}
+		
+		else {
+			conductorexist=false;
+		}
+		return conductorexist;
+	
+		
+		
+	}
+	public boolean isEncendidotren() {
+		
+		return encendidotren;
+	}
+	public void setEncendidotren(boolean encendidotren) {
+		this.encendidotren = encendidotren;
+	}
+}
