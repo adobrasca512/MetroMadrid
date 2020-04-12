@@ -1,0 +1,107 @@
+package MetroMadrid;
+
+import java.util.ArrayList;
+import java.util.ListIterator;
+import java.util.Stack;
+
+public class Pruebas {
+	//idea: simulador de tren: da la info y te solicita la parada
+//[linea 1: sol- chamartin- 5 de dic - pan de azucar]
+	public static void main(String[] args) {
+		//Algunos atributos que necesito:
+		int i=0;
+		
+		
+		
+		//forma de hacerlo 1
+		//trabajadores del metro
+		                     //empleo
+		Empleo empleo= new Empleo("Conductor");
+		                                      //nombre-apellido-dni-empleo
+		Trabajador trabajadores= new Trabajador("Adilem","Dobras", "ARGD43FM", empleo);
+		Empleo empleo1= new Empleo("asistente");
+		Trabajador trabajadores1= new Trabajador("Andrea","Pérez", "ARGD88FZ", empleo1);
+		
+		//forma de hacerlo 2
+	  /*  for(int i=0;i<trabajadores.getEmpleos().size();i++) {
+	    	System.out.print((((Empleo) trabajadores.getEmpleos().get(i)).getTipoempleos())+"- ");
+    }*/
+	    //----------------------lineas de metro-----------------
+		//Accesos: escaleras o elevador
+		Accesos accesos = new Accesos("escaleras");
+		
+		
+		//Estacion: 
+		Estacion estaciones = new Estacion("Villaverde Alto",accesos);
+		//Lineas: informacion
+				Lineas lineas= new Lineas(3, "amarillo", 1023.45, "ligero",estaciones);
+		//agregamos las estaciones
+		lineas.getEstaciones().add(new Estacion("San Cristobal",accesos));
+		//agregamos el tipo de acceso de la estacion
+		estaciones.getAccesos().add(new Accesos ("elevador"));
+		lineas.getEstaciones().add(new Estacion("Villaverde Bajo-Cruce",accesos));
+		estaciones.getAccesos().add(new Accesos ("escaleras"));
+		lineas.getEstaciones().add(new Estacion("Ciudad de los Angeles",accesos));
+		estaciones.getAccesos().add(new Accesos ("elevador"));
+		lineas.getEstaciones().add(new Estacion("San Fermín Orcasur",accesos));
+		estaciones.getAccesos().add(new Accesos ("escaleras"));
+		//iteradores de ArrayList
+		ListIterator<Estacion> iterador =lineas.getEstaciones().listIterator();
+		ListIterator<Accesos> iterador1=estaciones.getAccesos().listIterator();
+		//funciones para imprimir informacion
+				lineas.imprimirtodo();
+				//vagones: informacion
+				//esto solo aplica a trenes 
+				                       //placa y modelo
+				Vagon vagon = new Vagon( 54839, 2007);
+				//Locomotora: informacion
+				                                   //cantidad de lts - placa
+				Locomotora locomotora= new Locomotora(0, 34740);
+				//metro: informacion
+				Metro metro= new Metro(null, "[ Linea 3: Villaverde Alto-Alameda Ozuna ]", vagon, null, lineas, locomotora);
+				
+				
+				//Acciones que hace el metro
+				                      //Cantidad de lineas,color,longitud (km),tipo linea (normal o ligero)
+				vagon.getCantidadpasajerosypuertas();
+				System.out.println("cantidad de vagones: " +vagon.getCantidadvagones(lineas));
+			    System.out.println("--------------------------");
+			    System.out.println("cantidad de locomotoras: " +locomotora.getCantidadlocomotora(lineas));
+			  // metro.Conductor(trabajadores, empleo);
+				//Acciones
+				//estados de movimiento del coche en el anden y estado de puertas
+				                        //movimiento-movimiento puertas
+				Acciones acciones= new Acciones("movimiento","cerradas");//hay que arreglar
+				Acciones acciones1= new Acciones("detenido","abriendose");
+				Acciones acciones2= new Acciones("detenido","cerrandose");
+				
+				//Conductor
+				Conductor conductor= new Conductor(true);
+				//Trabajador trabajador= new Trabajador(null, null, null, empleo);
+				boolean conductorexist=conductor.getConductor(empleo);
+				boolean movimiento= conductor.isEncendidotren();
+				String busqueda="elevador";
+		
+		//su bucle
+		
+		while(conductorexist==true && movimiento==true  && iterador.hasNext() ) {
+			i++;
+			System.out.println("estacion "+i+": "+iterador.next().getNombreestacion()
+					+"\nacceso: "+iterador1.next().getAccesos()  );
+			acciones1.getMovimiento(conductor, trabajadores, empleo);
+			acciones1.getMovimientopuertas();
+			acciones2.getMovimiento(conductor, trabajadores, empleo);
+			acciones2.getMovimientopuertas();
+			acciones.getMovimiento(conductor, trabajadores, empleo);
+			acciones.getMovimientopuertas();
+			System.out.println();
+			//metro.imprimiracciones(acciones);
+		}
+		
+		
+		
+		
+        
+	}
+
+}
