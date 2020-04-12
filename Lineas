@@ -41,6 +41,7 @@ public void setLonglinea(double longlinea) {
 	this.longlinea = longlinea;
 }
 public ArrayList<Estacion> getEstaciones() {
+	
 	return estaciones;
 }
 public void setEstaciones(ArrayList<Estacion> estaciones) {
@@ -67,6 +68,8 @@ public void imprimirtodo() {
 			+ "\n-----------------------------------");
 	
 }
-//dudoso
+
+
 
 }
+
