@@ -21,3 +21,4 @@ public void setTipoempleos(String tipoempleos) {
 
 
 }
+
