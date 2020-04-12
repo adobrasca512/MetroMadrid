@@ -12,8 +12,8 @@ public Acciones( String movimiento, String movimientopuertas) {
 	
 	this.movimientopuertas = movimientopuertas;
 }
-public String getMovimiento(Conductor conductor,Trabajador trabajadores, Empleo empleo) {
-	boolean conductorexist=conductor.getConductor(empleo);
+public String getMovimiento(Conductor conductor, Empleo empleo) {
+	boolean conductorexist=conductor.getConductorexiste(empleo);
 	boolean encendido=conductor.isEncendidotren();
 	if(conductorexist=true && (encendido=true)) {
 	
@@ -50,6 +50,10 @@ public String getMovimientopuertas() {
 public void setMovimientopuertas(String movimientopuertas) {
 	this.movimientopuertas = movimientopuertas;
 }
-
+public void imprimirAcciones() {
+	System.out.println("movimiento: "+movimiento
+			+"\nmovimiento puertas: " +movimientopuertas);
+}
 
 }
+
