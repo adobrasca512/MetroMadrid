@@ -1,0 +1,72 @@
+package MetroMadrid;
+
+import java.util.*;
+import java.util.Iterator;
+import java.util.Vector;
+
+public class Lineas {
+private int nlineas;
+private String color;
+private double longlinea;
+private ArrayList<Estacion> estaciones;
+private String tipolinea;
+
+
+public Lineas(int nlineas, String color, double longlinea,String tipolinea,Estacion nombreestacion) {
+	super();
+	this.nlineas = nlineas;
+	this.color = color;
+	this.longlinea = longlinea;
+	this.tipolinea = tipolinea;
+	estaciones = new ArrayList<Estacion>();
+	estaciones.add(nombreestacion);
+	
+}
+public int getNlineas() {
+	return nlineas;
+}
+public void setNlineas(int nlineas) {
+	this.nlineas = nlineas;
+}
+public String getColor() {
+	return color;
+}
+public void setColor(String color) {
+	this.color = color;
+}
+public double getLonglinea() {
+	return longlinea;
+}
+public void setLonglinea(double longlinea) {
+	this.longlinea = longlinea;
+}
+public ArrayList<Estacion> getEstaciones() {
+	return estaciones;
+}
+public void setEstaciones(ArrayList<Estacion> estaciones) {
+	this.estaciones = estaciones;
+}
+public void parada() {
+	
+	
+}
+public String getTipoliea() {
+	return tipolinea;
+}
+public void setTipoliea(String tipoliea) {
+	this.tipolinea = tipoliea;
+}
+public void imprimirtodo() {
+	System.out.println(" Linea: " +nlineas +".");
+	System.out.println("-----------------------------------");
+	System.out.println(" color de linea: "+color +"."
+			+ "\n-----------------------------------"
+			+ "\n longitud de linea: "+longlinea +" km."
+			+ "\n-----------------------------------"
+			+ "\n tipo de linea (normal o ligero): "+tipolinea +"."
+			+ "\n-----------------------------------");
+	
+}
+//dudoso
+
+}
