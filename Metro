@@ -1,0 +1,61 @@
+package MetroMadrid;
+
+import java.util.Vector;
+
+public class Metro {
+
+private String maquina;
+private String cabecera;
+private Vagon vagones;
+private String equipo;
+private Lineas tipolinea;
+private Locomotora locomotora;
+public Metro( String maquina, String cabecera, Vagon vagones, String equipo,
+		Lineas tipolinea,Locomotora locomotora) {
+	
+	this.maquina = maquina;
+	this.cabecera = cabecera;
+	this.vagones = vagones;
+	this.equipo = equipo;
+    this.locomotora=locomotora;
+}
+
+
+public String getMaquina() {
+	return maquina;
+}
+public void setMaquina(String maquina) {
+	this.maquina = maquina;
+}
+public String getCabecera() {
+	return cabecera;
+}
+public void setCabecera(String cabecera) {
+	this.cabecera = cabecera;
+}
+public Vagon getVagones() {
+	return vagones;
+}
+public void setVagones(Vagon vagones) {
+	this.vagones = vagones;
+}
+public String getEquipo() {
+	return equipo;
+}
+public void setEquipo(String equipo) {
+	this.equipo = equipo;
+}
+
+/*public void imprimiracciones(Acciones acciones) {
+	System.out.println("\n-----------------------------------"
+    +"\n las puertas se encuentran: " +acciones.getMovimientopuertas()
+	+ "\n-----------------------------------"
+	+"\n estado de metro: "+acciones.getMovimiento()
+	+ "\n-----------------------------------");
+
+}*/
+public void setTipolinea(Lineas tipolinea) {
+	this.tipolinea = tipolinea;
+}
+
+}
