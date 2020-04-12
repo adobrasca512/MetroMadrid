@@ -10,14 +10,27 @@ private Vagon vagones;
 private String equipo;
 private Lineas tipolinea;
 private Locomotora locomotora;
+private Acciones acciones;
+private Conductor conductor;
 public Metro( String maquina, String cabecera, Vagon vagones, String equipo,
-		Lineas tipolinea,Locomotora locomotora) {
+		Lineas tipolinea,Locomotora locomotora,Conductor conductor) {
 	
 	this.maquina = maquina;
 	this.cabecera = cabecera;
 	this.vagones = vagones;
 	this.equipo = equipo;
     this.locomotora=locomotora;
+    this.tipolinea=tipolinea;
+    this.acciones= new Acciones ("detenido","abiertas") ;
+}
+
+public Acciones getAcciones() {
+	return acciones;
+}
+
+
+public void setAcciones(Acciones acciones) {
+	this.acciones = acciones;
 }
 
 
@@ -44,6 +57,36 @@ public String getEquipo() {
 }
 public void setEquipo(String equipo) {
 	this.equipo = equipo;
+}
+public void Parada(String inicio,String finales) {
+	int i=encontrado(inicio);
+	//[1 sol -callao 
+	//[elevador -escaleras
+		while( i<=encontrado(finales)) {
+			System.out.println("-----------------------------------");
+			System.out.println(tipolinea.getEstaciones().get(i).getNombreestacion() +"\naccesos:  "+tipolinea.getEstaciones().get(i).getAccesos());
+			setAcciones(new Acciones("detenido","abiertas"));
+			acciones.imprimirAcciones();
+			setAcciones(new Acciones("movimiento","cerradas"));
+		    acciones.imprimirAcciones();
+		 
+			i++;
+	}
+	
+}
+public int encontrado(String finales){
+	int encontrado=-1;
+	int i=0;
+	while((encontrado==-1) && i<tipolinea.getEstaciones().size()) {
+		if(tipolinea.getEstaciones().get(i).getNombreestacion().equals(finales)) {
+			encontrado=i;//donde esta el elemento que se encontro
+		}
+		
+		i++;
+	}
+	
+	return encontrado;
+	
 }
 
 /*public void imprimiracciones(Acciones acciones) {
