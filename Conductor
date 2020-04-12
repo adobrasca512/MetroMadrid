@@ -7,7 +7,7 @@ public class Conductor {
 		super();
 		this.encendidotren = encendidotren;
 	}
-	public boolean getConductor( Empleo empleo) {
+	public boolean getConductorexiste( Empleo empleo) {
 		boolean conductorexist=false;
 		if(empleo.getTipompleos().equalsIgnoreCase("conductor")) {
 			conductorexist=true;
