@@ -1,0 +1,23 @@
+package MetroMadrid;
+
+public class Empleo {
+private String tipoempleos;
+
+public Empleo(String tipoempleos) {
+	this.tipoempleos = tipoempleos;
+}
+public String getTipompleos() {
+	
+	return tipoempleos;
+}
+public String toString() {
+	return "Empleo: " +this.tipoempleos;
+}
+
+public void setTipoempleos(String tipoempleos) {
+	this.tipoempleos = tipoempleos;
+}
+
+
+
+}
